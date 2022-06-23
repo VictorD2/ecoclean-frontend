@@ -1,12 +1,7 @@
-import { NextPage } from "next";
-
+import { NextPage } from 'next';
+import MunicipalidadPage from '../components/Municipalidad/Municipalidad';
 const Municipalidad: NextPage = () => {
-    return (
-      <>
-      </>
-    );
-  };
+  return <MunicipalidadPage />;
+};
 
-  
 export default Municipalidad;
-  

@@ -20,7 +20,7 @@ const routes = [
   },
   {
     link: 'recoleccion',
-    name: 'Recolección',
+    name: 'Puntos de Recolección',
   },
   {
     link: 'foro',
@@ -35,7 +35,7 @@ const Navbar = () => {
         <Link href="/">
           <Image alt="EcoClean Logo" className="cursor-pointer" width={logo.width / 3.4} height={logo.height / 3.4} src={logo.src}></Image>
         </Link>
-        <ul className="h-full flex justify-center gap-10 items-center">
+        <ul className="h-full flex justify-center gap-5 items-center">
           {routes.map((item, i) => {
             if (item.child) return <AppDropdown as="li" key={i} name={item.name} child={item.child} />;
             return (
