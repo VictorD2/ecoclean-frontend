@@ -24,7 +24,7 @@ const Footer = () => {
         </ul>
       </div>
       <div className="lg:w-1/4 md:w-1/3 sm:w-full w-full bg-layout">
-        <ul className="w-full text-white flex flex-col gap-7 justify-center items-start">
+        <ul className="w-full text-white flex flex-col gap-7 justify-center items-start overflow-hidden">
           <li>
             <strong>Email:</strong>
             <br />

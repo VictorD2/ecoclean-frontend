@@ -6,7 +6,7 @@ const Municipalidad = () => {
   return (
     <div className="w-full bg-background flex justify-center py-14">
       <div className="p-7 bg-white shadow-black shadow-2xl w-10/12 border-t-8 border-gray-500 rounded">
-        <h2 className="text-3xl uppercase">Municipalidad</h2>
+        <h2 className="lg:text-3xl text-2xl uppercase">Municipalidad</h2>
         <section className="text-justify pt-5 flex justify-center flex-col">
           <Image src={foto.src} height={foto.height} width={foto.width}></Image>
           <p className="text-gray-500 my-10">
@@ -18,7 +18,7 @@ const Municipalidad = () => {
             potencialidades locales para el comercio y turismo de alta calidad.
           </p>
         </section>
-        <h2 className="text-3xl uppercase">ORGANIGRAMA DE LA MUNICIPALIDAD</h2>
+        <h2 className="lg:text-3xl text-2xl uppercase">ORGANIGRAMA DE LA MUNICIPALIDAD</h2>
         <section className="text-justify pt-5 flex justify-center flex-col">
           <Image src={foto2.src} height={foto2.height} width={foto2.width}></Image>
         </section>

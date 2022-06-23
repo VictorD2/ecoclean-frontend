@@ -17,7 +17,7 @@ const AppDropdown = ({ name, child, as }: AppDropdownTypes) => {
       <div>
         <Menu.Button>
           <div className="flex flex-row gap-2 justify-between items-center text-gray-400 uppercase font-bold hover:text-white transition-all duration-700">
-            <div className="hidden md:block ltr:md:ml-2 rtl:md:mr-2 truncate" style={{ maxWidth: '7rem' }}>
+            <div className="md:block ltr:md:ml-2 rtl:md:mr-2 truncate" style={{ maxWidth: '7rem' }}>
               {name}
             </div>
             <ChevronDownIcon className="w-5 h-5 ltr:ml-2 rtl:mr-2 ltr:-mr-1 rtl:-ml-1 text-violet-200 hover:text-violet-100" aria-hidden="true" />
@@ -41,7 +41,7 @@ const AppDropdown = ({ name, child, as }: AppDropdownTypes) => {
                   {({ active }) => (
                     <button
                       className={
-                        (active || router.pathname == item.link ? 'text-white' : 'text-gray-400') +
+                        (active || router.pathname.includes(item.link) ? 'text-white' : 'text-gray-400') +
                         ' group flex rounded-md items-center w-full px-2 py-2 text-sm uppercase font-bold hover:text-white transition-all duration-700'
                       }
                       onClick={() => {}}

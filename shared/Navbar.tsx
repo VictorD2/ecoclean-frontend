@@ -1,6 +1,9 @@
+import { MenuIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { AppButton } from '../elements/app_button';
 import AppDropdown from '../elements/app_dropdown_menu';
 import logo from './../assets/img/logo.jpeg';
 
@@ -29,24 +32,68 @@ const routes = [
 ];
 
 const Navbar = () => {
+  const [visible, setvisible] = useState<boolean>(false);
+  const router = useRouter();
   return (
-    <header className="h-24 w-full bg-layout">
-      <nav className="w-full h-full flex flex-row justify-center gap-4 items-center">
-        <Link href="/">
-          <Image alt="EcoClean Logo" className="cursor-pointer" width={logo.width / 3.4} height={logo.height / 3.4} src={logo.src}></Image>
-        </Link>
-        <ul className="h-full flex justify-center gap-5 items-center">
-          {routes.map((item, i) => {
-            if (item.child) return <AppDropdown as="li" key={i} name={item.name} child={item.child} />;
-            return (
-              <li key={i} className="text-gray-400 font-bold hover:text-white uppercase transition-all duration-700">
-                <Link href={item.link}>{item.name}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-    </header>
+    <>
+      <header className="h-24 w-full bg-layout lg:relative sticky top-0 z-20">
+        <nav className="w-full h-full flex flex-row lg:justify-center justify-end gap-4 items-center">
+          <div className="lg:hidden flex mr-4">
+            <AppButton
+              onClick={() => {
+                setvisible(!visible);
+              }}
+            >
+              <MenuIcon className="text-white w-5" />
+            </AppButton>
+          </div>
+          <div className="lg:flex hidden">
+            <Link href="/">
+              <Image alt="EcoClean Logo" className="cursor-pointer" width={logo.width / 3.4} height={logo.height / 3.4} src={logo.src}></Image>
+            </Link>
+          </div>
+          <ul className="h-full lg:flex hidden justify-center gap-5 items-center">
+            {routes.map((item, i) => {
+              if (item.child) return <AppDropdown as="li" key={i} name={item.name} child={item.child} />;
+              return (
+                <li key={i} className={`${router.pathname.includes(item.link) ? 'text-white' : 'text-gray-400'} font-bold hover:text-white uppercase transition-all duration-700`}>
+                  <Link href={item.link}>{item.name}</Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Responsive Navbar */}
+        <nav
+          className={`${
+            visible ? '-translate-x-full' : ''
+          } transition-all duration-300 z-10 bg-layout top-0 w-[240px] h-screen fixed lg:hidden flex flex-col justify-start gap-10 pt-5 items-center overflow-y-scroll scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent`}
+        >
+          <div>
+            <Link href="/">
+              <Image alt="EcoClean Logo" className="cursor-pointer" width={logo.width / 3.4} height={logo.height / 3.4} src={logo.src}></Image>
+            </Link>
+          </div>
+          <ul className="flex flex-col justify-center gap-5 items-center pb-10">
+            {routes.map((item, i) => {
+              if (item.child) return <AppDropdown as="li" key={i} name={item.name} child={item.child} />;
+              return (
+                <li
+                  onClick={() => {
+                    setvisible(!visible);
+                  }}
+                  key={i}
+                  className={`${router.pathname.includes(item.link) ? 'text-white' : 'text-gray-400'} font-bold hover:text-white uppercase transition-all duration-700`}
+                >
+                  <Link href={item.link}>{item.name}</Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </header>
+    </>
   );
 };
 

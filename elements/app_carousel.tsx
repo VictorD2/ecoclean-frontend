@@ -21,8 +21,7 @@ const AppCarousel = ({ images }: AppCarousel) => {
       <div className="relative w-full h-full overflow-hidden">
         {images.map((item, i) => {
           return (
-            <div className={`${i === selected ? '' : 'hidden'} relative float-left w-full h-full`}>
-              <img src={item} className="block w-full h-full" alt={`foto ${i + 1}`} />
+            <div className={`${i === selected ? '' : 'hidden'} relative float-left w-full h-full bg-cover bg-no-repeat bg-center`} style={{ backgroundImage: `url(${item})` }}>
             </div>
           );
         })}
