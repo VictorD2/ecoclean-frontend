@@ -1,10 +1,13 @@
-import { MenuIcon } from '@heroicons/react/outline';
+import { LoginIcon, MenuIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { UserContext } from '../auth/AuthContext';
+import ClsAuth from '../class/ClsAuth';
 import { AppButton } from '../elements/app_button';
 import AppDropdown from '../elements/app_dropdown_menu';
+import { initialStateUser } from '../interface/auth.interface';
 import logo from './../assets/img/logo.jpeg';
 
 const routes = [
@@ -34,6 +37,11 @@ const routes = [
 const Navbar = () => {
   const [visible, setvisible] = useState<boolean>(false);
   const router = useRouter();
+  const { user, setUser } = useContext(UserContext);
+  const logOut = () => {
+    setUser(initialStateUser);
+    ClsAuth.logOut();
+  };
   return (
     <>
       <header className="h-24 w-full bg-layout lg:relative sticky top-0 z-20">
@@ -61,6 +69,30 @@ const Navbar = () => {
                 </li>
               );
             })}
+            <li>
+              <div className="lg:flex hidden">
+                {!user.id && (
+                  <Link href="/iniciar">
+                    <AppButton onClick={() => {}}>
+                      <div className="flex gap-2">
+                        <LoginIcon className="w-5" />
+                        <span className="uppercase">ingresar</span>
+                      </div>
+                    </AppButton>
+                  </Link>
+                )}
+                {user.id && (
+                  <Link href="/">
+                    <AppButton onClick={logOut}>
+                      <div className="flex gap-2">
+                        <LoginIcon className="w-5" />
+                        <span className="uppercase">salir</span>
+                      </div>
+                    </AppButton>
+                  </Link>
+                )}
+              </div>
+            </li>
           </ul>
         </nav>
 
@@ -90,6 +122,28 @@ const Navbar = () => {
                 </li>
               );
             })}
+            <li>
+              {!user.id && (
+                <Link href="/iniciar">
+                  <AppButton onClick={() => {}}>
+                    <div className="flex gap-2">
+                      <LoginIcon className="w-5" />
+                      <span className="uppercase">ingresar</span>
+                    </div>
+                  </AppButton>
+                </Link>
+              )}
+              {user.id && (
+                <Link href="/">
+                  <AppButton onClick={logOut}>
+                    <div className="flex gap-2">
+                      <LoginIcon className="w-5" />
+                      <span className="uppercase">Salir</span>
+                    </div>
+                  </AppButton>
+                </Link>
+              )}
+            </li>
           </ul>
         </nav>
       </header>

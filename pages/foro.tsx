@@ -1,12 +1,7 @@
-import { NextPage } from "next";
+import { NextPage } from 'next';
 
 const Foro: NextPage = () => {
-    return (
-      <>
-      </>
-    );
-  };
+  return <></>;
+};
 
-  
 export default Foro;
-  

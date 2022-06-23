@@ -9,7 +9,9 @@ import { useEffect, useState } from 'react';
 import favicon from '../public/favicon.ico';
 import LoadingPage from '../shared/LoadingPage';
 import UserLayout from '../layout/UserLayout';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider } from '../auth/AuthContext';
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const rutasPublicas = ['/iniciar', '/registrarse'];
@@ -29,25 +31,28 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router.route]);
 
   return (
-    <>
-      <Head>
-        <title>ECOCLEAN {router.route === '/' ? '' : router.route.replace('/', '- ').toUpperCase()}</title>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <link rel="icon" type="image/png" href={favicon.src}></link>
-      </Head>
-      {loading && (
-        <>
-          {rutasPublicas.includes(router.route) ? (
-            <Component {...pageProps} />
-          ) : (
-            <UserLayout>
+    <AuthProvider>
+      <>
+        <Head>
+          <title>ECOCLEAN {router.route === '/' ? '' : router.route.replace('/', '- ').toUpperCase()}</title>
+          <meta name="viewport" content="initial-scale=1, width=device-width" />
+          <link rel="icon" type="image/png" href={favicon.src}></link>
+        </Head>
+        <ToastContainer />
+        {loading && (
+          <>
+            {rutasPublicas.includes(router.route) ? (
               <Component {...pageProps} />
-            </UserLayout>
-          )}
-        </>
-      )}
-      {!loading && <LoadingPage />}
-    </>
+            ) : (
+              <UserLayout>
+                <Component {...pageProps} />
+              </UserLayout>
+            )}
+          </>
+        )}
+        {!loading && <LoadingPage />}
+      </>
+    </AuthProvider>
   );
 }
 
