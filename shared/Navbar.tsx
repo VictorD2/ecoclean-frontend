@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { LoginIcon, MenuIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import Link from 'next/link';

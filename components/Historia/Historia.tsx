@@ -18,7 +18,7 @@ const Historia = () => {
             atractivos turísticos entre los que destacan el Túnel de los Deseos en el Paseo de las Aguas, la iglesia de Huamán que data de la época colonial, el balneario de Buenos Aires, el Mural de
             Caballos de Paso, entre otros. Hacia la parte sur del distrito aún se conserva parte de su campiña en la zona cercana al río Moche y su desembocadura en el océano Pacífico.
           </p>
-          <Image src={foto.src} height={foto.height} width={foto.width}></Image>
+          <Image alt="foto" src={foto.src} height={foto.height} width={foto.width}></Image>
         </section>
       </div>
     </div>

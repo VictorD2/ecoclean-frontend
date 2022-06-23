@@ -1,5 +1,5 @@
 import { Menu, Transition } from '@headlessui/react';
-import { ChevronDownIcon, LogoutIcon, UserCircleIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon } from '@heroicons/react/outline';
 import React, { ElementType, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';

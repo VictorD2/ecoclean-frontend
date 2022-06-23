@@ -1,10 +1,10 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 import React, { useState } from 'react';
-type AppCarousel = {
+type AppCarouselProps = {
   images: string[];
 };
 
-const AppCarousel = ({ images }: AppCarousel) => {
+const AppCarousel = ({ images }: AppCarouselProps) => {
   const [selected, setSelected] = useState<number>(0);
 
   const nextImage = () => {
@@ -20,10 +20,7 @@ const AppCarousel = ({ images }: AppCarousel) => {
     <div className="relative h-[calc(100vh-6rem)] w-full">
       <div className="relative w-full h-full overflow-hidden">
         {images.map((item, i) => {
-          return (
-            <div className={`${i === selected ? '' : 'hidden'} relative float-left w-full h-full bg-cover bg-no-repeat bg-center`} style={{ backgroundImage: `url(${item})` }}>
-            </div>
-          );
+          return <div key={i} className={`${i === selected ? '' : 'hidden'} relative float-left w-full h-full bg-cover bg-no-repeat bg-center`} style={{ backgroundImage: `url(${item})` }}></div>;
         })}
       </div>
       <button

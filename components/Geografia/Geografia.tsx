@@ -18,9 +18,9 @@ const Geografia = () => {
     { titulo: 'Número de contribuyentes (2019)', valor: '20,406' },
     { titulo: 'Superficie Territorial', valor: '40 km2' },
   ];
-  const rows = filas.map((item) => {
+  const rows = filas.map((item, i) => {
     return (
-      <tr className="h-10 text-gray-500">
+      <tr key={i} className="h-10 text-gray-500">
         <td>{item.titulo}</td>
         <td>{item.valor}</td>
       </tr>
@@ -43,6 +43,7 @@ const Geografia = () => {
             height={750}
             style={{ border: 0 }}
             allowFullScreen
+            title="mapa"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />

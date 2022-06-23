@@ -1,4 +1,4 @@
-import { LoginResponse, ILogin, IRegister, RegisterResponse } from '../interface/auth.interface';
+import { LoginResponse, IRegister, RegisterResponse } from '../interface/auth.interface';
 import { AxiosResponse } from 'axios';
 import axios from '../util/axios';
 

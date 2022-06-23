@@ -12,6 +12,7 @@ import UserLayout from '../layout/UserLayout';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from '../auth/AuthContext';
+
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const rutasPublicas = ['/iniciar', '/registrarse'];

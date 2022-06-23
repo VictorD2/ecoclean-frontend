@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../shared/Footer';
 import Navbar from '../shared/Navbar';
 
+// eslint-disable-next-line no-undef
 const UserLayout = ({ children }: { children: JSX.Element }) => {
   return (
     <>

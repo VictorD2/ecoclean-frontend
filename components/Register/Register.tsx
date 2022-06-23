@@ -33,7 +33,7 @@ const Register = () => {
         <div className="flex justify-center items-center p-5 rounded-lg bg-transparent flex-col">
           <div className="cursor-pointer">
             <Link href="/">
-              <Image src={foto.src} height={foto.height} width={foto.width}></Image>
+              <Image alt="foto" src={foto.src} height={foto.height} width={foto.width}></Image>
             </Link>
           </div>
           <h2 className="uppercase text-white font-bold text-lg">Registrate</h2>
@@ -78,7 +78,7 @@ const Register = () => {
               value={register.lastname}
             />
             <div className="flex gap-6 pb-4 flex-col h-full w-full justify-end items-center">
-              <AppButton  type="submit" className="justify-self-end w-4/5" loading={!loading} disabled={loading} bgColor="bg-secondary" onClick={() => {}}>
+              <AppButton type="submit" className="justify-self-end w-4/5" loading={!loading} disabled={loading} bgColor="bg-secondary" onClick={() => {}}>
                 <div className="flex gap-2">
                   <PencilIcon className="w-6" />
                   <span className="uppercase font-bold">Registrarse</span>

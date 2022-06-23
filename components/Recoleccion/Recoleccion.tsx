@@ -8,7 +8,7 @@ const Recoleccion = () => {
     <div className="w-full bg-background flex flex-col justify-center items-center py-14 gap-10">
       <div className="p-7 bg-white shadow-black shadow-2xl w-10/12 border-t-8 border-gray-500 rounded">
         <section className="text-justify pt-5 flex justify-center flex-col">
-          <Image src={foto.src} height={foto.height} width={foto.width}></Image>
+          <Image alt="foto" src={foto.src} height={foto.height} width={foto.width}></Image>
           <h2 className="text-2xl uppercase my-4">¿CÓMO PARTICIPAR EN EL PROGRAMA?</h2>
           <h3 className="text-xl uppercase">Etapa 1:</h3>
           <p className="text-gray-500 my-2">
@@ -26,7 +26,7 @@ const Recoleccion = () => {
       </div>
       <div className="p-7 bg-white shadow-black shadow-2xl w-10/12 border-t-8 border-gray-500 rounded">
         <section className="text-justify pt-5 flex justify-center flex-col">
-          <Image src={foto2.src} height={foto2.height} width={foto2.width}></Image>
+          <Image alt="foto" src={foto2.src} height={foto2.height} width={foto2.width}></Image>
         </section>
       </div>
     </div>

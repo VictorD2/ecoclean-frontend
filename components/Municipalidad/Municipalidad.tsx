@@ -8,7 +8,7 @@ const Municipalidad = () => {
       <div className="p-7 bg-white shadow-black shadow-2xl w-10/12 border-t-8 border-gray-500 rounded">
         <h2 className="lg:text-3xl text-2xl uppercase">Municipalidad</h2>
         <section className="text-justify pt-5 flex justify-center flex-col">
-          <Image src={foto.src} height={foto.height} width={foto.width}></Image>
+          <Image alt="foto" src={foto.src} height={foto.height} width={foto.width}></Image>
           <p className="text-gray-500 my-10">
             Dirección: Independencia 210, Distrito de Víctor Larco Herrera 13009 Teléfono: (044) 481548 Alcalde: César Juárez Castillo Misión Institucional La Municipalidad de Víctor es el órgano de
             Gobierno Local que representa y gestiona los intereses de los vecinos victor larco en especifico San Andres 5ta etapa, promoviendo una fuerte gobernabilidad democrática, asegurando la
@@ -20,7 +20,7 @@ const Municipalidad = () => {
         </section>
         <h2 className="lg:text-3xl text-2xl uppercase">ORGANIGRAMA DE LA MUNICIPALIDAD</h2>
         <section className="text-justify pt-5 flex justify-center flex-col">
-          <Image src={foto2.src} height={foto2.height} width={foto2.width}></Image>
+          <Image alt="foto" src={foto2.src} height={foto2.height} width={foto2.width}></Image>
         </section>
       </div>
     </div>

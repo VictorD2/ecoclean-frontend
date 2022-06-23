@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { IAuthContext, initialStateUser, IUser } from '../interface/auth.interface';
 export const UserContext = React.createContext({} as IAuthContext);
 const rutesPublicas = ['/iniciar', '/registrarse'];
+// eslint-disable-next-line no-undef
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<IUser>(initialStateUser);
   const router = useRouter();

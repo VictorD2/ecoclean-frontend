@@ -34,7 +34,7 @@ const Login = () => {
         <div className="flex justify-center items-center p-5 rounded-lg bg-transparent flex-col">
           <div className="cursor-pointer">
             <Link href="/">
-              <Image src={foto.src} height={foto.height} width={foto.width}></Image>
+              <Image alt="foto" src={foto.src} height={foto.height} width={foto.width}></Image>
             </Link>
           </div>
           <h2 className="uppercase text-white font-bold text-lg">Inicia Sesión</h2>

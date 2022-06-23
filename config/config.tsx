@@ -1,1 +1,1 @@
-export const API = "https://ecoclean-backend.herokuapp.com/"
+export const API = 'https://ecoclean-backend.herokuapp.com/';
