@@ -1,9 +1,13 @@
-import jwtDecode from 'jwt-decode';
-import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import jwtDecode from 'jwt-decode';
+
 import { IAuthContext, initialStateUser, IUser } from '../interface/auth.interface';
-export const UserContext = React.createContext({} as IAuthContext);
+
 const rutesPublicas = ['/iniciar', '/registrarse'];
+
+export const UserContext = React.createContext({} as IAuthContext);
+
 // eslint-disable-next-line no-undef
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<IUser>(initialStateUser);
