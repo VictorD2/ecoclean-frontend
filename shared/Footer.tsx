@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="p-20 bg-layout flex flex-wrap justify-around gap-10">
       <div className="lg:w-1/4 md:w-1/3 sm:w-full w-full bg-layout">
         <ul className="w-full text-white flex flex-col gap-7 justify-center items-start">
-          <li>© 2021 EcoClean</li>
+          <li>© 2022 EcoClean</li>
           <li>
             <strong>Responsable Portal Institucional</strong>
             <br />

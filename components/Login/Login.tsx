@@ -1,32 +1,52 @@
-import { LoginIcon, PencilIcon } from '@heroicons/react/outline';
+import React, { useContext, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext, useState } from 'react';
+
+import { LoginIcon, PencilIcon } from '@heroicons/react/outline';
+
 import foto from '../../assets/img/logoEco.png';
-import { UserContext } from '../../auth/AuthContext';
+
 import ClsAuth from '../../class/ClsAuth';
+
+import { UserContext } from '../../auth/AuthContext';
+
 import { AppButton } from '../../elements/app_button';
 import { AppInputText } from '../../elements/app_input_text';
-import { ILogin, initialStateLogin, IUser } from '../../interface/auth.interface';
+
+import { initialStateLogin, IUser } from '../../interface/auth.interface';
+
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
+import { LoginSchema } from '../../schemas/auth.schema';
 
 const Login = () => {
-  const [login, setLogin] = useState<ILogin>(initialStateLogin);
   const [loading, setLoading] = useState<boolean>(false);
   const { setUser } = useContext(UserContext);
   const router = useRouter();
 
-  const handleSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    const user: IUser | undefined = await ClsAuth.login(login.email, login.password);
-    if (!user) return setLoading(false);
-    setUser(user);
-    router.push('/');
-    setLoading(false);
+  const formik = useFormik({
+    initialValues: initialStateLogin,
+    validationSchema: Yup.object(LoginSchema),
+    validateOnChange: false,
+    onSubmit: async (formValue) => {
+      setLoading(true);
+      const user: IUser | undefined = await ClsAuth.login(formValue.email, formValue.password);
+      if (!user) return setLoading(false);
+      setUser(user);
+      router.push('/');
+      setLoading(false);
+    },
+  });
+
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    formik.setFieldValue(e.target.name, e.target.value);
   };
 
-  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => setLogin({ ...login, [e.target.name]: e.target.value });
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    formik.setFieldError(e.target.name, '');
+  };
 
   return (
     <main className="w-screen h-screen bg-gray-900 flex justify-center items-center">
@@ -40,14 +60,16 @@ const Login = () => {
           <h2 className="uppercase text-white font-bold text-lg">Inicia Sesión</h2>
         </div>
         <div className="w-full h-[calc(100%-200px)] px-4 pb-4 bg-transparent">
-          <form onSubmit={handleSubmitForm} className="w-full h-full p-2 flex gap-4 flex-col">
+          <form className="w-full h-full p-2 flex gap-4 flex-col">
             <AppInputText
               className="focus:border-secondary border-2 focus:shadow-secondary focus:shadow-md transition-all duration-500"
               labelColor="text-white"
               label="Correo Electrónico"
               name="email"
               onChange={handleChangeInput}
-              value={login.email}
+              onFocus={handleFocus}
+              helpText={formik.errors.email}
+              value={formik.values.email}
             />
             <AppInputText
               className="focus:border-secondary border-2 focus:shadow-secondary focus:shadow-md transition-all duration-500"
@@ -56,10 +78,12 @@ const Login = () => {
               name="password"
               type="password"
               onChange={handleChangeInput}
-              value={login.password}
+              onFocus={handleFocus}
+              helpText={formik.errors.password}
+              value={formik.values.password}
             />
             <div className="flex gap-6 pb-4 flex-col h-full justify-end items-end">
-              <AppButton className="justify-self-end w-full" loading={!loading} disabled={loading} type="submit" onClick={() => {}}>
+              <AppButton className="justify-self-end w-full" loading={!loading} disabled={loading} type="submit" onClick={formik.handleSubmit}>
                 <div className="flex gap-2">
                   <LoginIcon className="w-6" />
                   <span className="uppercase font-bold">Iniciar Sesión</span>

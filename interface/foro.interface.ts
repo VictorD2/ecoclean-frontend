@@ -1,11 +1,13 @@
+import { FormikProps } from 'formik';
+
 export interface IForo {
   id?: number;
   title: string;
   description: string;
-  autor: string;
-  id_autor: number;
+  author?: string;
+  id_autor?: number;
   photo: string | File;
-  date: Date | string;
+  created_at: Date | string;
 }
 
 export interface IForoContext {
@@ -18,13 +20,48 @@ export interface IForoContext {
   loading: boolean;
   setLoading: Function;
   formSubmit: Function;
+  formik: FormikProps<IForoCreate>;
+  formikEdit: FormikProps<IForoCreate>;
+  openModal: boolean;
+  setOpenModal: Function;
 }
 
 export const initialStateForo: IForo = {
   title: '',
   description: '',
-  autor: '',
+  author: '',
   id_autor: 0,
   photo: '',
-  date: '',
+  created_at: '',
 };
+export interface IForoCreate {
+  title: string;
+  description: string;
+  photo: string | File;
+}
+
+export const initialStateForoCreate: IForoCreate = {
+  title: '',
+  description: '',
+  photo: '',
+};
+
+export interface IForoEdit {
+  title: string;
+  description: string;
+  photo: string | File;
+}
+export const initialStateForoEdit: IForoEdit = {
+  title: '',
+  description: '',
+  photo: '',
+};
+
+export interface CreateForoResponse {
+  success?: string;
+  foro?: IForo;
+}
+export interface GetForosResponse {
+  success?: string;
+  foros?: IForo[];
+}

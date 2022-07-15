@@ -24,7 +24,6 @@ export interface LoginResponse {
 }
 export interface RegisterResponse {
   success?: string;
-  error?: string;
   user?: IUser;
   token?: string;
 }
